@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-# Descarga los modelos desde HuggingFace con el cliente oficial (soporta Xet).
+# Descarga los modelos desde HuggingFace con huggingface-cli (usa Xet via hf_xet,
+# compatible con huggingface_hub <1.0). Fallback a LFS plano si Xet falla.
 set -euo pipefail
-export HF_HUB_ENABLE_HF_TRANSFER=1
 
 # dl <repo> <ruta_en_repo> <dir_destino> <nombre_destino>
 dl() {
   echo ">>> $1 :: $2"
-  hf download "$1" "$2" --local-dir /tmp/hf \
-    || huggingface-cli download "$1" "$2" --local-dir /tmp/hf --local-dir-use-symlinks False
+  huggingface-cli download "$1" "$2" --local-dir /tmp/hf \
+    || HF_HUB_DISABLE_XET=1 huggingface-cli download "$1" "$2" --local-dir /tmp/hf
   mkdir -p "$3"
   mv "/tmp/hf/$2" "$3/$4"
 }
@@ -33,3 +33,4 @@ dl Comfy-Org/Krea-2      vae/qwen_image_vae.safetensors                         
 
 rm -rf /tmp/hf
 echo ">>> Todos los modelos descargados."
+ls -la /comfyui/models/unet /comfyui/models/text_encoders /comfyui/models/vae /comfyui/models/loras
