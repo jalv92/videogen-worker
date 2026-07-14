@@ -13,7 +13,7 @@ dl() {
 }
 
 # --- VIDEO (LTX-2.3) ---
-dl unsloth/LTX-2.3-GGUF  ltx-2.3-22b-dev-Q4_K_M.gguf                                                   /comfyui/models/unet                   ltx-2.3-22b-dev-Q4_K_M.gguf
+dl unsloth/LTX-2.3-GGUF  ltx-2.3-22b-dev-Q8_0.gguf                                                   /comfyui/models/unet                   ltx-2.3-22b-dev-Q8_0.gguf
 dl Comfy-Org/ltx-2       split_files/text_encoders/gemma_3_12B_it_fp4_mixed.safetensors                /comfyui/models/text_encoders          gemma_3_12B_it_fp4_mixed.safetensors
 dl unsloth/LTX-2.3-GGUF  text_encoders/ltx-2.3-22b-dev_embeddings_connectors.safetensors              /comfyui/models/text_encoders          ltx-2.3-22b-dev_embeddings_connectors.safetensors
 dl unsloth/LTX-2.3-GGUF  vae/ltx-2.3-22b-dev_video_vae.safetensors                                    /comfyui/models/vae                    ltx-2.3-22b-dev_video_vae.safetensors
